@@ -1,0 +1,50 @@
+{{!--  ésta contendrá la misma lista de productos,
+ sin embargo, ésta trabajará con websockets.
+ Al trabajar con websockets, cada vez que creemos un producto nuevo, o bien cada vez que eliminemos un producto,
+  se debe actualizar automáticamente en dicha vista la lista. --}}
+ 
+<h3 style="color: #0066cc; text-align: center; margin-bottom: 20px;">Real-Time Products</h3>
+
+<div style="margin-bottom: 20px;">
+    <h2 style="color: #333;">Add Product</h2>
+    <form id="form" style="margin-bottom: 20px;">
+        <label for="title" style="display: block; margin-bottom: 10px;">Title:</label>
+        <input type="text" name="title" id="title" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+
+        <label for="description" style="display: block; margin-bottom: 10px;">Description:</label>
+        <input type="text" name="description" id="description" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+
+        <label for="price" style="display: block; margin-bottom: 10px;">Price:</label>
+        <input type="number" name="price" id="price" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+
+        <input type="submit" value="Create" style="background-color: #0066cc; color: white; padding: 10px; border: none; cursor: pointer;">
+    </form>
+</div>
+
+<table id="table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+    <thead>
+        <tr style="background-color: #0066cc; color: white;">
+            <th style="padding: 10px;">ID</th>
+            <th style="padding: 10px;">Title</th>
+            <th style="padding: 10px;">Description</th>
+            <th style="padding: 10px;">Price</th>
+            <th style="padding: 10px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        {{#each products}}
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px;">{{id}}</td>
+            <td style="padding: 10px;">{{title}}</td>
+            <td style="padding: 10px;">{{description}}</td>
+            <td style="padding: 10px;">{{price}}</td>
+            <td style="padding: 10px;">
+                <button id="deleteBtn" style="background-color: #ff4d4d; color: white; padding: 8px; border: none; cursor: pointer;">Borrar</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="/socket.io/socket.io.js"></script> 
+<script src="/js/index.js"></script>

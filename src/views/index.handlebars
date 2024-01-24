@@ -1,0 +1,13 @@
+{{!-- Crear una vista “index.handlebars” la cual contenga una lista de todos los productos agregados hasta el momento --}}
+<div style="max-width: 800px; margin: 20px auto; background-color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
+  <h2 style="color: #333; text-align: center; padding: 20px 0;">Disfrute de nuestro catálogo de productos</h2>
+  {{#each products}}
+    <div style="border-bottom: 1px solid #ddd; padding: 20px; text-align: left;">
+      <img src="{{thumbnails.[0]}}" alt="{{title}}" style="width: 100%; border-bottom: 1px solid #ddd; margin-bottom: 15px;">
+      <h3 style="color: #333; margin-top: 5px;">Id {{id}}</h3>
+      <h1 style="color: #0066cc; margin-bottom: 5px;">{{title}}</h1>
+      <h2 style="color: #333;">Precio ${{price}}</h2>
+      <h3 style="color: #666; margin-top: 5px;">Stock {{stock}}</h3>
+    </div>
+  {{/each}}
+</div>
